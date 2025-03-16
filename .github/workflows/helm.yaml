@@ -17,7 +17,8 @@ jobs:
         run: |
           curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
           helm version
-          helm registry login ghcr.io -u ${{ github.repository_owner }} -p ${{ secrets.GITHUB_TOKEN }}
+          #echo "${{ secrets.REGISTRY_TOKEN }}" | helm registry login ghcr.io -u ${{ github.repository_owner }} --password-stdin
+          helm registry login ghcr.io -u ${{ github.repository_owner }} -p ${{ secrets.REGISTRY_TOKEN }}
           helm lint chart
           helm package chart
           helm push $(ls *.tgz| head -1) oci://ghcr.io/${{ github.repository_owner }}/charts
