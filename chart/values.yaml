@@ -85,6 +85,10 @@ autoscaling:
 
 # Additional volumes on the output Deployment definition.
 volumes:
+- name: run
+  emptyDir:
+    medium: Memory
+    sizeLimit: 500Mi
 - name: tmp
   emptyDir:
     medium: Memory
@@ -92,6 +96,8 @@ volumes:
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
+- name: run
+  mountPath: /run
 - name: tmp
   mountPath: /tmp
 
