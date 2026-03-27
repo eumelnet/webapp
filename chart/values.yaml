@@ -106,3 +106,8 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+# Additional env vars or valuesfrom
+env:
+- name: TZ
+  value: UTC
